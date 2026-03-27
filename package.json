@@ -1,6 +1,6 @@
 {
   "name": "dropin-feedback-widget",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Drop-in feedback widget for React — text + voice recording with Whisper transcription",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
