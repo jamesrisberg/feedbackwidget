@@ -1,11 +1,11 @@
 {
-  "name": "feedbackwidget",
+  "name": "dropin-feedback-widget",
   "version": "0.1.0",
   "description": "Drop-in feedback widget for React — text + voice recording with Whisper transcription",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "feedbackwidget": "bin/init.js"
+    "dropin-feedback-widget": "bin/init.js"
   },
   "exports": {
     ".": {
@@ -40,7 +40,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jamesrisberg/feedbackwidget"
+    "url": "git+https://github.com/jamesrisberg/feedbackwidget.git"
   },
   "peerDependencies": {
     "react": ">=18",
