@@ -185,10 +185,19 @@ export class VoiceRecorder {
       this.timerId = null;
     }
 
-    if (this.mediaRecorder && this.mediaRecorder.state === "recording") {
-      this.mediaRecorder.requestData();
+    // Wait for the MediaRecorder to flush all remaining data before building the blob.
+    // stop() fires a final ondataavailable with any buffered audio, then fires onstop.
+    const blob = await new Promise<Blob>((resolve) => {
+      if (!this.mediaRecorder || this.mediaRecorder.state !== "recording") {
+        resolve(new Blob(this.chunks, { type: this.mimeType }));
+        return;
+      }
+
+      this.mediaRecorder.onstop = () => {
+        resolve(new Blob(this.chunks, { type: this.mimeType }));
+      };
       this.mediaRecorder.stop();
-    }
+    });
 
     if (this.stream) {
       this.stream.getTracks().forEach((t) => t.stop());
@@ -196,7 +205,6 @@ export class VoiceRecorder {
     }
 
     const duration = this._elapsedTime;
-    const blob = new Blob(this.chunks, { type: this.mimeType });
     this.mediaRecorder = null;
     this.chunks = [];
 
