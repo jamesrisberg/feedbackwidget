@@ -71,12 +71,9 @@ function App() {
 
 ## Voice Transcription Setup
 
-When a user records voice feedback, the widget needs to convert that audio into text. This happens in two steps:
+When a user records voice feedback, the widget needs to convert that audio into text. It uses [Groq](https://console.groq.com)'s free Whisper API for this.
 
-1. The widget records audio in the browser
-2. It sends the audio to a **server endpoint you create**, which calls Whisper (a free speech-to-text AI) and returns the transcript
-
-The `transcribe` prop tells the widget where to send the audio. You need to create that endpoint.
+The catch: your Groq API key can't be in client-side code (anyone could steal it). So the widget sends audio to a small server endpoint *you* create, which forwards it to Groq and returns the transcript. Your endpoint is just a 3-line proxy to keep the key safe.
 
 ### Step 1: Get a free Groq API key
 
