@@ -71,7 +71,24 @@ function App() {
 
 ## Voice Transcription Setup
 
-Voice recordings need a server endpoint. A Next.js helper is included:
+When a user records voice feedback, the widget needs to convert that audio into text. This happens in two steps:
+
+1. The widget records audio in the browser
+2. It sends the audio to a **server endpoint you create**, which calls Whisper (a free speech-to-text AI) and returns the transcript
+
+The `transcribe` prop tells the widget where to send the audio. You need to create that endpoint.
+
+### Step 1: Get a free Groq API key
+
+[Groq](https://console.groq.com) runs Whisper for free. Sign up, create an API key, and add it to `.env.local`:
+
+```
+GROQ_API_KEY=your_key_here
+```
+
+### Step 2: Create the transcription endpoint
+
+**Next.js App Router** — a one-liner helper is included:
 
 ```ts
 // app/api/feedback/transcribe/route.ts
@@ -82,22 +99,26 @@ export const POST = createTranscriptionHandler({
 });
 ```
 
-Get a free API key at [console.groq.com](https://console.groq.com). Add to `.env.local`:
+Then pass the URL to the widget:
 
+```tsx
+<FeedbackWidget
+  transcribe="/api/feedback/transcribe"
+  // ...
+/>
 ```
-GROQ_API_KEY=your_key_here
-```
 
-### Custom transcription
-
-Not on Next.js? Pass a function instead of a URL:
+**Not on Next.js?** Pass a function instead of a URL — the widget will call it directly with the audio blob:
 
 ```tsx
 <FeedbackWidget
   transcribe={async (audioBlob) => {
     const fd = new FormData();
     fd.append("audio", audioBlob);
-    const res = await fetch("https://your-api.com/transcribe", { method: "POST", body: fd });
+    const res = await fetch("https://your-api.com/transcribe", {
+      method: "POST",
+      body: fd,
+    });
     return (await res.json()).transcript;
   }}
   // ...
