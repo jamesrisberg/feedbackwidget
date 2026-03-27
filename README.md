@@ -105,19 +105,31 @@ Then pass the URL to the widget:
 />
 ```
 
-**Not on Next.js?** Pass a function instead of a URL — the widget will call it directly with the audio blob:
+**Not on Next.js?** Here's what the endpoint does — it forwards audio to Groq and returns the transcript. Write your own in any backend:
+
+```ts
+// Express / Node example
+app.post("/api/feedback/transcribe", async (req, res) => {
+  const formData = new FormData();
+  formData.append("file", req.body.audio);  // the audio file
+  formData.append("model", "whisper-large-v3-turbo");
+
+  const groqRes = await fetch("https://api.groq.com/openai/v1/audio/transcriptions", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${process.env.GROQ_API_KEY}` },
+    body: formData,
+  });
+
+  const { text } = await groqRes.json();
+  res.json({ transcript: text });
+});
+```
+
+Then point the widget at it:
 
 ```tsx
 <FeedbackWidget
-  transcribe={async (audioBlob) => {
-    const fd = new FormData();
-    fd.append("audio", audioBlob);
-    const res = await fetch("https://your-api.com/transcribe", {
-      method: "POST",
-      body: fd,
-    });
-    return (await res.json()).transcript;
-  }}
+  transcribe="/api/feedback/transcribe"
   // ...
 />
 ```
