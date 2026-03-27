@@ -196,7 +196,7 @@ export function FeedbackWidget({
               height: 12,
               borderRadius: "50%",
               background: colors.white,
-              animation: `fieldmark-pulse ${recordingState === "time-limit" ? "0.5s" : "1s"} ease-in-out infinite`,
+              animation: `fb-pulse ${recordingState === "time-limit" ? "0.5s" : "1s"} ease-in-out infinite`,
             }}
           />
           {recordingState === "time-limit" ? "Sending..." : formatTime(elapsedTime)}
@@ -404,7 +404,7 @@ export function FeedbackWidget({
                         height: 24,
                         borderRadius: "50%",
                         background: colors.red,
-                        animation: "fieldmark-pulse 1s ease-in-out infinite",
+                        animation: "fb-pulse 1s ease-in-out infinite",
                       }}
                     />
                   </div>
@@ -419,7 +419,7 @@ export function FeedbackWidget({
                         marginTop: 8,
                         color: timeWarning ? colors.amber : colors.textSecondary,
                         fontWeight: timeWarning ? 600 : 400,
-                        animation: timeWarning ? "fieldmark-pulse 1s ease-in-out infinite" : undefined,
+                        animation: timeWarning ? "fb-pulse 1s ease-in-out infinite" : undefined,
                       }}
                     >
                       {maxRecordingSeconds - elapsedTime}s remaining
@@ -454,7 +454,7 @@ export function FeedbackWidget({
                       fill="none"
                       stroke={colors.amber}
                       viewBox="0 0 24 24"
-                      style={{ animation: "fieldmark-pulse 0.5s ease-in-out infinite" }}
+                      style={{ animation: "fb-pulse 0.5s ease-in-out infinite" }}
                     >
                       <path
                         strokeLinecap="round"
@@ -482,7 +482,7 @@ export function FeedbackWidget({
                       border: `2px solid ${colors.primary}`,
                       borderTopColor: "transparent",
                       borderRadius: "50%",
-                      animation: "fieldmark-spin 0.8s linear infinite",
+                      animation: "fb-spin 0.8s linear infinite",
                       margin: "0 auto 12px",
                     }}
                   />
@@ -538,11 +538,11 @@ export function FeedbackWidget({
 
       {/* Keyframe animations */}
       <style>{`
-        @keyframes fieldmark-pulse {
+        @keyframes fb-pulse {
           0%, 100% { opacity: 1; transform: scale(1); }
           50% { opacity: 0.5; transform: scale(0.85); }
         }
-        @keyframes fieldmark-spin {
+        @keyframes fb-spin {
           to { transform: rotate(360deg); }
         }
       `}</style>

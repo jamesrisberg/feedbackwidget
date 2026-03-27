@@ -1,11 +1,11 @@
 {
-  "name": "fieldmark-feedback",
+  "name": "feedbackwidget",
   "version": "0.1.0",
   "description": "Drop-in feedback widget for React — text + voice recording with Whisper transcription",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "fieldmark-feedback": "bin/init.js"
+    "feedbackwidget": "bin/init.js"
   },
   "exports": {
     ".": {
@@ -39,8 +39,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jamesrisberg/orthodoxpm",
-    "directory": "packages/feedback-widget"
+    "url": "https://github.com/jamesrisberg/feedbackwidget"
   },
   "peerDependencies": {
     "react": ">=18",

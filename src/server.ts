@@ -4,7 +4,7 @@
  * Usage (Next.js App Router):
  *
  *   // app/api/feedback/transcribe/route.ts
- *   import { createTranscriptionHandler } from 'fieldmark-feedback/server';
+ *   import { createTranscriptionHandler } from 'feedbackwidget/server';
  *   export const POST = createTranscriptionHandler({
  *     groqApiKey: process.env.GROQ_API_KEY!,
  *   });

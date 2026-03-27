@@ -1,4 +1,4 @@
-# fieldmark-feedback
+# feedbackwidget
 
 Drop-in feedback widget for React apps. Floating button opens a panel with two tabs:
 
@@ -10,13 +10,13 @@ You provide an `onSubmit` callback. Save feedback wherever you want — Firestor
 ## Install
 
 ```bash
-npm install fieldmark-feedback
+npm install feedbackwidget
 ```
 
 ## Quick Start
 
 ```tsx
-import { FeedbackWidget } from 'fieldmark-feedback';
+import { FeedbackWidget } from 'feedbackwidget';
 
 function App() {
   return (
@@ -45,7 +45,7 @@ Voice recordings need a server endpoint. A Next.js helper is included:
 
 ```ts
 // app/api/feedback/transcribe/route.ts
-import { createTranscriptionHandler } from 'fieldmark-feedback/server';
+import { createTranscriptionHandler } from 'feedbackwidget/server';
 
 export const POST = createTranscriptionHandler({
   groqApiKey: process.env.GROQ_API_KEY!,

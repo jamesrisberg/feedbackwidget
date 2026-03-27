@@ -1,14 +1,14 @@
 ---
 name: setup-feedback
-description: Set up the fieldmark-feedback widget in a React/Next.js project. Installs the package, creates the transcription API route, configures env vars, and wires up the widget.
+description: Set up the feedbackwidget widget in a React/Next.js project. Installs the package, creates the transcription API route, configures env vars, and wires up the widget.
 disable-model-invocation: true
 argument-hint: "[onSubmit-target]"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
-# Set up fieldmark-feedback
+# Set up feedbackwidget
 
-You are setting up the `fieldmark-feedback` voice + text feedback widget in a React project. Follow these steps in order.
+You are setting up the `feedbackwidget` voice + text feedback widget in a React project. Follow these steps in order.
 
 Reference docs: [README](../../README.md)
 
@@ -24,7 +24,7 @@ If it's not a React project, stop and tell the user this widget requires React 1
 
 ## 2. Install the package
 
-Copy the `fieldmark-feedback` package into the project. If it's a monorepo with a `packages/` directory, copy there. Otherwise copy to a `lib/feedback-widget/` directory.
+Copy the `feedbackwidget` package into the project. If it's a monorepo with a `packages/` directory, copy there. Otherwise copy to a `lib/feedback-widget/` directory.
 
 Then install it as a local dependency:
 
@@ -41,7 +41,7 @@ Or if the user provides an npm registry URL or the package is published, use tha
 Create `app/api/feedback/transcribe/route.ts`:
 
 ```ts
-import { createTranscriptionHandler } from 'fieldmark-feedback/server';
+import { createTranscriptionHandler } from 'feedbackwidget/server';
 
 export const POST = createTranscriptionHandler({
   groqApiKey: process.env.GROQ_API_KEY!,
@@ -146,7 +146,7 @@ export async function POST(request: NextRequest) {
 4. Mount the widget:
 
 ```tsx
-import { FeedbackWidget } from 'fieldmark-feedback';
+import { FeedbackWidget } from 'feedbackwidget';
 
 <FeedbackWidget
   user={{ id: currentUser.id, name: currentUser.name }}
@@ -168,7 +168,7 @@ Tell the user: "Get your Linear API key from Linear Settings > API > Personal AP
 Look for existing Firebase setup in the project (search for `firebase`, `firestore`, `initializeApp`). Use whatever `db` instance they already have.
 
 ```tsx
-import { FeedbackWidget } from 'fieldmark-feedback';
+import { FeedbackWidget } from 'feedbackwidget';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase'; // adjust to match their import
 
@@ -189,7 +189,7 @@ import { db } from '@/lib/firebase'; // adjust to match their import
 Look for existing Supabase client setup in the project.
 
 ```tsx
-import { FeedbackWidget } from 'fieldmark-feedback';
+import { FeedbackWidget } from 'feedbackwidget';
 
 <FeedbackWidget
   user={{ id: session.user.id, name: session.user.email }}
@@ -264,7 +264,7 @@ Use it as the POST endpoint:
 ### Default (no argument or "console")
 
 ```tsx
-import { FeedbackWidget } from 'fieldmark-feedback';
+import { FeedbackWidget } from 'feedbackwidget';
 
 <FeedbackWidget
   user={{ id: "test-user", name: "Tester" }}
