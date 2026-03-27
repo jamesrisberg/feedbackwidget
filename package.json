@@ -1,0 +1,54 @@
+{
+  "name": "fieldmark-feedback",
+  "version": "0.1.0",
+  "description": "Drop-in feedback widget for React — text + voice recording with Whisper transcription",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "fieldmark-feedback": "bin/init.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "default": "./dist/server.js"
+    }
+  },
+  "files": [
+    "dist",
+    "bin",
+    "skills",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "npx tsc",
+    "dev": "npx tsc --watch",
+    "prepublishOnly": "npx tsc"
+  },
+  "keywords": [
+    "feedback",
+    "widget",
+    "voice",
+    "whisper",
+    "transcription",
+    "react",
+    "claude-code"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamesrisberg/orthodoxpm",
+    "directory": "packages/feedback-widget"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "typescript": "^5.9.3"
+  },
+  "license": "MIT"
+}
