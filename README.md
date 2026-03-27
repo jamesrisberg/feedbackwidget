@@ -1,4 +1,4 @@
-# feedbackwidget
+# dropin-feedback-widget
 
 Drop-in feedback widget for React apps. Floating button opens a panel with two tabs:
 
@@ -10,7 +10,7 @@ You provide an `onSubmit` callback. Save feedback wherever you want — Firestor
 ## Install
 
 ```bash
-npm install feedbackwidget
+npm install dropin-feedback-widget
 ```
 
 ### Claude Code Setup
@@ -18,7 +18,7 @@ npm install feedbackwidget
 If you use [Claude Code](https://claude.ai/code), run:
 
 ```bash
-npx feedbackwidget
+npx dropin-feedback-widget
 ```
 
 This installs a `/setup-feedback` skill. Then in Claude Code:
@@ -38,7 +38,7 @@ Claude handles the full setup — API route, env vars, mounting the widget, wiri
 After installing, point your agent at the setup instructions:
 
 ```
-Read skills/setup-feedback/SKILL.md in node_modules/feedbackwidget/ and follow it to set up the feedback widget. Target: [linear|firestore|supabase|slack]
+Read skills/setup-feedback/SKILL.md in node_modules/dropin-feedback-widget/ and follow it to set up the feedback widget. Target: [linear|firestore|supabase|slack]
 ```
 
 The skill file contains step-by-step instructions any AI coding agent can follow — framework detection, API route creation, env configuration, and integration wiring for each backend.
@@ -46,7 +46,7 @@ The skill file contains step-by-step instructions any AI coding agent can follow
 ## Quick Start
 
 ```tsx
-import { FeedbackWidget } from 'feedbackwidget';
+import { FeedbackWidget } from 'dropin-feedback-widget';
 
 function App() {
   return (
@@ -89,7 +89,7 @@ GROQ_API_KEY=your_key_here
 
 ```ts
 // app/api/feedback/transcribe/route.ts
-import { createTranscriptionHandler } from 'feedbackwidget/server';
+import { createTranscriptionHandler } from 'dropin-feedback-widget/server';
 
 export const POST = createTranscriptionHandler({
   groqApiKey: process.env.GROQ_API_KEY!,

@@ -7,7 +7,7 @@ const skillDir = path.join(process.cwd(), ".claude", "skills", "setup-feedback")
 const skillSrc = path.join(__dirname, "..", "skills", "setup-feedback", "SKILL.md");
 
 if (!fs.existsSync(skillSrc)) {
-  console.error("Could not find SKILL.md in package. Try reinstalling feedbackwidget.");
+  console.error("Could not find SKILL.md in package. Try reinstalling dropin-feedback-widget.");
   process.exit(1);
 }
 
@@ -15,7 +15,7 @@ fs.mkdirSync(skillDir, { recursive: true });
 fs.copyFileSync(skillSrc, path.join(skillDir, "SKILL.md"));
 
 console.log("");
-console.log("  feedbackwidget skill installed!");
+console.log("  dropin-feedback-widget skill installed!");
 console.log("");
 console.log("  Open Claude Code and run:");
 console.log("");

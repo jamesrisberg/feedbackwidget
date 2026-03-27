@@ -4,7 +4,7 @@
  * Usage (Next.js App Router):
  *
  *   // app/api/feedback/transcribe/route.ts
- *   import { createTranscriptionHandler } from 'feedbackwidget/server';
+ *   import { createTranscriptionHandler } from 'dropin-feedback-widget/server';
  *   export const POST = createTranscriptionHandler({
  *     groqApiKey: process.env.GROQ_API_KEY!,
  *   });
