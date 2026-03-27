@@ -24,6 +24,7 @@
     "README.md"
   ],
   "scripts": {
+    "postinstall": "node bin/postinstall.js",
     "build": "npx tsc",
     "dev": "npx tsc --watch",
     "prepublishOnly": "npx tsc"
