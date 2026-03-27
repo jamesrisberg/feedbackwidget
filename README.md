@@ -13,15 +13,11 @@ You provide an `onSubmit` callback. Save feedback wherever you want — Firestor
 npm install dropin-feedback-widget
 ```
 
-### Claude Code Setup
+### Agentic Setup
 
-If you use [Claude Code](https://claude.ai/code), run:
+There's a skill at skills/setup-feedback/SKILL.md in node_modules/dropin-feedback-widget/
 
-```bash
-npx dropin-feedback-widget
-```
-
-This installs a `/setup-feedback` skill. Then in Claude Code:
+Install the skill, and then:
 
 ```
 /setup-feedback              # defaults to console.log
@@ -29,16 +25,6 @@ This installs a `/setup-feedback` skill. Then in Claude Code:
 /setup-feedback firestore    # saves to Firestore
 /setup-feedback supabase     # saves to Supabase
 /setup-feedback slack        # posts to Slack
-```
-
-Claude handles the full setup — API route, env vars, mounting the widget, wiring up your backend.
-
-### Other AI Agents (Codex, Gemini, Cursor, Aider, etc.)
-
-After installing, point your agent at the setup instructions:
-
-```
-Read skills/setup-feedback/SKILL.md in node_modules/dropin-feedback-widget/ and follow it to set up the feedback widget. Target: [linear|firestore|supabase|slack]
 ```
 
 The skill file contains step-by-step instructions any AI coding agent can follow — framework detection, API route creation, env configuration, and integration wiring for each backend.
