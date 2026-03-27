@@ -13,6 +13,26 @@ You provide an `onSubmit` callback. Save feedback wherever you want — Firestor
 npm install feedbackwidget
 ```
 
+### Claude Code Setup
+
+If you use [Claude Code](https://claude.ai/code), run:
+
+```bash
+npx feedbackwidget
+```
+
+This installs a `/setup-feedback` skill. Then in Claude Code:
+
+```
+/setup-feedback              # defaults to console.log
+/setup-feedback linear       # creates Linear issues
+/setup-feedback firestore    # saves to Firestore
+/setup-feedback supabase     # saves to Supabase
+/setup-feedback slack        # posts to Slack
+```
+
+Claude handles the full setup — API route, env vars, mounting the widget, wiring up your backend.
+
 ## Quick Start
 
 ```tsx
